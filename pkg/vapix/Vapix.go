@@ -11,7 +11,7 @@ import (
 	"strconv"
 )
 
-const INTERNAL_VAPIX_ENDPOINT = "http://127.0.0.12"
+var INTERNAL_VAPIX_ENDPOINT = "http://127.0.0.12"
 
 type RequestResult struct {
 	IsOk           bool
@@ -40,6 +40,19 @@ type VapixError struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
 }
+
+var INTERNAL_VAPIX_ENDPOINT = getVapixEndpoint()
+
+// Retrieve the VAPIX endpoint, prioritizing the environment variable
+func getVapixEndpoint() string {
+	envEndpoint := os.Getenv("VAPIX_ENDPOINT")
+	if envEndpoint != "" {
+		return envEndpoint
+	}
+	// Fallback to the default value
+	return "http://127.0.0.12"
+}
+
 
 func NewVapixBaseMethodCall(method string) *VapixApiCall {
 	return &VapixApiCall{
