@@ -11,7 +11,7 @@ import (
 	"strconv"
 )
 
-var INTERNAL_VAPIX_ENDPOINT = "http://127.0.0.12"
+var INTERNAL_VAPIX_ENDPOINT = getVapixEndpoint()
 
 type RequestResult struct {
 	IsOk           bool
