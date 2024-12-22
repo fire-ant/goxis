@@ -39,10 +39,10 @@ type VapixError struct {
 	Message string `json:"message"`
 }
 
-var INTERNAL_VAPIX_ENDPOINT = getVapixEndpoint()
+var INTERNAL_VAPIX_ENDPOINT = GetVapixEndpoint()
 
 // Retrieve the VAPIX endpoint, prioritizing the environment variable
-func getVapixEndpoint() string {
+func GetVapixEndpoint() string {
 	envEndpoint := os.Getenv("VAPIX_ENDPOINT")
 	if envEndpoint != "" {
 		return envEndpoint
