@@ -11,8 +11,6 @@ import (
 	"strconv"
 )
 
-var INTERNAL_VAPIX_ENDPOINT = getVapixEndpoint()
-
 type RequestResult struct {
 	IsOk           bool
 	Error          error
